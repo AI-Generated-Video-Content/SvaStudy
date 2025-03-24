@@ -1,0 +1,145 @@
+[
+  {
+    "id": 1,
+    "title": "Understanding Fractions: Basic Concepts",
+    "subject": "Mathematics",
+    "grade": "3-5",
+    "duration": "8:24",
+    "views": 12845,
+    "description": "Learn the basic concepts of fractions in this engaging AI-generated video.",
+    "thumbnail": "/videos/thumbnails/fractions.jpg",
+    "videoUrl": "/videos/fractions.mp4"
+  },
+  {
+    "id": 2,
+    "title": "The Solar System: Our Celestial Neighborhood",
+    "subject": "Science",
+    "grade": "4-6",
+    "duration": "12:15",
+    "views": 18621,
+    "description": "Explore the wonders of our solar system with stunning visuals and easy explanations.",
+    "thumbnail": "/videos/thumbnails/solar-system.jpg",
+    "videoUrl": "/videos/solar-system.mp4"
+  },
+  {
+    "id": 3,
+    "title": "Cell Structure and Function",
+    "subject": "Biology",
+    "grade": "7-9",
+    "duration": "14:32",
+    "views": 9756,
+    "description": "Dive into the microscopic world of cells and discover how they function.",
+    "thumbnail": "/videos/thumbnails/cells.jpg",
+    "videoUrl": "/videos/cells.mp4"
+  },
+  {
+    "id": 4,
+    "title": "Introduction to Algebra",
+    "subject": "Mathematics",
+    "grade": "6-8",
+    "duration": "10:45",
+    "views": 15234,
+    "description": "Master the basics of algebra with easy-to-follow examples and explanations.",
+    "thumbnail": "/videos/thumbnails/algebra.jpg",
+    "videoUrl": "/videos/algebra.mp4"
+  },
+  {
+    "id": 5,
+    "title": "Ancient Egypt: Life Along the Nile",
+    "subject": "History",
+    "grade": "5-7",
+    "duration": "00:00:03",
+    "views": 7823,
+    "description": "Journey back in time to explore the fascinating civilization of Ancient Egypt.",
+    "thumbnail": "/videos/thumbnails/egypt.jpg",
+    "videoUrl": "/videos/egypt.mp4"
+  },
+  {
+    "id": 6,
+    "title": "Parts of Speech: Nouns, Verbs, and More",
+    "subject": "English",
+    "grade": "1-3",
+    "duration": "7:52",
+    "views": 14329,
+    "description": "Learn about the different parts of speech in a fun and engaging way.",
+    "thumbnail": "/videos/thumbnails/speech.jpg",
+    "videoUrl": "/videos/speech.mp4"
+  },
+  {
+    "id": 7,
+    "title": "Chemistry Basics: Atoms and Molecules",
+    "subject": "Science",
+    "grade": "9-12",
+    "duration": "15:03",
+    "views": 6598,
+    "description": "Understand the fundamental building blocks of matter in this comprehensive video.",
+    "thumbnail": "/videos/thumbnails/chemistry.jpg",
+    "videoUrl": "/videos/chemistry.mp4"
+  },
+  {
+    "id": 8,
+    "title": "World War II: Causes and Effects",
+    "subject": "History",
+    "grade": "10-12",
+    "duration": "18:45",
+    "views": 11452,
+    "description": "Explore the complex history of World War II and its global impact.",
+    "thumbnail": "/videos/thumbnails/ww2.jpg",
+    "videoUrl": "/videos/ww2.mp4"
+  },
+  {
+    "id": 9,
+    "title": "The Water Cycle: Nature's Recycling System",
+    "subject": "Science",
+    "grade": "3-5",
+    "duration": "9:12",
+    "views": 8432,
+    "description": "Discover how water moves through our environment in an endless cycle of evaporation, condensation, and precipitation.",
+    "thumbnail": "/videos/thumbnails/water-cycle.jpg",
+    "videoUrl": "/videos/water-cycle.mp4"
+  },
+  {
+    "id": 10,
+    "title": "Shakespeare's Romeo and Juliet: Plot and Themes",
+    "subject": "English",
+    "grade": "9-12",
+    "duration": "17:50",
+    "views": 13289,
+    "description": "Analyze the timeless tragedy of Romeo and Juliet, exploring the major themes and literary devices used by Shakespeare.",
+    "thumbnail": "/videos/thumbnails/shakespeare.jpg",
+    "videoUrl": "/videos/shakespeare.mp4"
+  },
+  {
+    "id": 11,
+    "title": "Photosynthesis: How Plants Make Food",
+    "subject": "Biology",
+    "grade": "6-8",
+    "duration": "11:05",
+    "views": 10567,
+    "description": "Learn how plants convert sunlight into energy through the fascinating process of photosynthesis.",
+    "thumbnail": "/videos/thumbnails/photosynthesis.jpg",
+    "videoUrl": "/videos/photosynthesis.mp4"
+  },
+  {
+    "id": 12,
+    "title": "Introduction to Coding: Basic Concepts",
+    "subject": "Computer Science",
+    "grade": "4-8",
+    "duration": "13:42",
+    "views": 19875,
+    "description": "Start your coding journey with this introduction to programming concepts, variables, and simple algorithms.",
+    "thumbnail": "/videos/thumbnails/coding.jpg",
+    "videoUrl": "/videos/coding.mp4"
+  },
+  {
+    "id": 13,
+    "title": "ANKURLOGY",
+    "subject": "Education",
+    "grade": "11-12",
+    "duration": "19:45",
+    "views": 1142,
+    "description": "Learn about innovative educational methodologies and teaching techniques with ANKURLOGY.",
+    "thumbnail": "/videos/thumbnails/fractions.jpg",
+    "videoUrl": "/videos/fractions.mp4"
+  }
+] 
