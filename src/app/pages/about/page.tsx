@@ -51,7 +51,7 @@ export default function AboutPage() {
           <h1 className="text-4xl font-bold text-gray-900 mb-4">
             About Our Educational Platform
           </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl font-mono text-gray-600 max-w-3xl mx-auto">
             Empowering education through AI-driven video content and interactive learning experiences.
           </p>
         </motion.div>
