@@ -1,26 +1,44 @@
-"use client";
-
-import { useEffect, useState } from "react";
-import { useParams, notFound } from "next/navigation";
+import { Suspense } from "react";
 import VideoPlayer from "../../../components/VideoPlayer";
 import VideoDebug from "../../../components/VideoDebug";
 import videoData from "../../../data/videos.json";
 import Link from "next/link";
+import ClientVideoContent from "./client-content";
 
-export default function VideoPage() {
-  const params = useParams();
-  const [showDebug, setShowDebug] = useState(false);
-  
-  const videoId = typeof params.id === 'string' ? parseInt(params.id, 10) : null;
-  const video = videoId ? videoData.find(v => v.id === videoId) : null;
-  
-  useEffect(() => {
-    // Reset debug mode when video changes
-    setShowDebug(false);
-  }, [params.id]);
+// This function tells Next.js which routes to pre-render at build time
+export async function generateStaticParams() {
+  // Create an array of objects with the id parameter for each video
+  return videoData.map((video) => ({
+    id: video.id.toString(),
+  }));
+}
 
+// This is needed for static export to properly generate pages
+export const dynamicParams = false; // Only pre-render pages defined by generateStaticParams
+
+// This default export will run at build time
+export default function VideoPage({ params }: { params: { id: string } }) {
+  const videoId = parseInt(params.id, 10);
+  const video = videoData.find(v => v.id === videoId);
+  
+  // Handle not found case
   if (!video) {
-    return notFound();
+    return (
+      <div className="bg-gray-50 min-h-screen py-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <h1 className="text-3xl font-bold mb-4">Video not found</h1>
+          <Link 
+            href="/pages/videos" 
+            className="text-indigo-600 hover:text-indigo-800 flex items-center gap-1"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clipRule="evenodd" />
+            </svg>
+            Back to videos
+          </Link>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -66,23 +84,9 @@ export default function VideoPage() {
           <div className="text-sm text-gray-500">{video.views.toLocaleString()} views</div>
         </div>
         
-        <div className="text-center">
-          <button 
-            onClick={() => setShowDebug(!showDebug)}
-            className="text-gray-500 text-sm hover:text-indigo-600"
-          >
-            {showDebug ? "Hide debug info" : "Show debug info"}
-          </button>
-        </div>
-        
-        {showDebug && (
-          <div className="mt-6">
-            <VideoDebug 
-              videoUrl={video.videoUrl}
-              thumbnail={video.thumbnail}
-            />
-          </div>
-        )}
+        <Suspense fallback={<div>Loading debug options...</div>}>
+          <ClientVideoContent video={video} />
+        </Suspense>
       </div>
     </div>
   );
