@@ -27,14 +27,15 @@ jobs:
           node-version: "18"
           cache: 'npm'
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
       - name: Install dependencies
         run: npm ci
         shell: bash  # Explicitly set Bash shell
 
-      - name: Build and export Next.js site
-        run: |
-          npm run build
-          npm run export
+      - name: Build Next.js site
+        run: npm run build
         shell: bash  # Fix YAML syntax
 
       - name: Add .nojekyll file
@@ -42,7 +43,7 @@ jobs:
         shell: bash
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # Ensure correct version
+        uses: actions/upload-pages-artifact@v1  # Using v1 for compatibility
         with:
           path: ./out
 
