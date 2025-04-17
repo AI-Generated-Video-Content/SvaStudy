@@ -1,17 +1,12 @@
-import { Suspense } from "react";
-import VideoPlayer from "@/app/components/VideoPlayer";
+import { Suspense, lazy } from "react";
 import VideoDebug from "@/app/components/VideoDebug";
 import videoData from "@/app/data/videos.json";
 import Link from "next/link";
 import ClientVideoContent from "./client-content";
 import { Metadata, ResolvingMetadata } from "next";
-import dynamic from "next/dynamic";
 
-// Dynamically import the GroqChatbot to avoid SSR issues with client components
-const GroqChatbot = dynamic(() => import("@/app/components/GroqChatbot"), {
-  ssr: false,
-  loading: () => null,
-});
+// Dynamically import the VideoPlayer component
+const VideoPlayer = lazy(() => import("@/app/components/VideoPlayer"));
 
 // This function tells Next.js which routes to pre-render at build time
 export async function generateStaticParams() {
@@ -39,7 +34,7 @@ export async function generateMetadata(
     title: video.title,
     description: video.description,
     openGraph: {
-      images: [video.thumbnail],
+      images: [video.thumbnail], // metadataBase will handle absolute URL resolution
     },
   };
 }
@@ -102,11 +97,13 @@ export default function VideoPage({ params }: { params: { id: string } }) {
         </div>
         
         <div className="mb-8">
-          <VideoPlayer 
-            videoUrl={video.videoUrl}
-            thumbnail={video.thumbnail}
-            title={video.title}
-          />
+          <Suspense fallback={<div className="aspect-video bg-gray-200 flex items-center justify-center rounded-lg">Loading video player...</div>}>
+            <VideoPlayer 
+              videoUrl={video.videoUrl}
+              thumbnail={video.thumbnail}
+              title={video.title}
+            />
+          </Suspense>
         </div>
         
         <div className="bg-white rounded-lg shadow-sm p-6 mb-6">
@@ -117,11 +114,6 @@ export default function VideoPage({ params }: { params: { id: string } }) {
         
         <Suspense fallback={<div>Loading debug options...</div>}>
           <ClientVideoContent video={video} />
-        </Suspense>
-        
-        {/* GROQ AI Learning Assistant */}
-        <Suspense fallback={null}>
-          <GroqChatbot />
         </Suspense>
       </div>
     </div>

@@ -18,6 +18,11 @@ type VideoType = {
 export default function ClientVideoContent({ video }: { video: VideoType }) {
   const [showDebug, setShowDebug] = useState(false);
 
+  // Safeguard against undefined video prop during hydration
+  if (!video || typeof video !== 'object') {
+    return null;
+  }
+
   return (
     <>
       <div className="text-center">

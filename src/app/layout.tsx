@@ -6,9 +6,13 @@ import Footer from "./components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Set the base URL for metadata based on environment
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://ai-generated-video-content.github.io/SvaStudy';
+
 export const metadata: Metadata = {
   title: "SvaStudy - Educational Video Platform",
   description: "Learn through AI-generated educational videos",
+  metadataBase: new URL(baseUrl),
 };
 
 export default function RootLayout({
