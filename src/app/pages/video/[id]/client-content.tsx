@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import VideoDebug from "../../../components/VideoDebug";
+import VideoDebug from "@/app/components/VideoDebug";
 
 type VideoType = {
   id: number;

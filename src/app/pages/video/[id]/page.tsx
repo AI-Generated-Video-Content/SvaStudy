@@ -1,9 +1,17 @@
 import { Suspense } from "react";
-import VideoPlayer from "../../../components/VideoPlayer";
-import VideoDebug from "../../../components/VideoDebug";
-import videoData from "../../../data/videos.json";
+import VideoPlayer from "@/app/components/VideoPlayer";
+import VideoDebug from "@/app/components/VideoDebug";
+import videoData from "@/app/data/videos.json";
 import Link from "next/link";
 import ClientVideoContent from "./client-content";
+import { Metadata, ResolvingMetadata } from "next";
+import dynamic from "next/dynamic";
+
+// Dynamically import the GroqChatbot to avoid SSR issues with client components
+const GroqChatbot = dynamic(() => import("@/app/components/GroqChatbot"), {
+  ssr: false,
+  loading: () => null,
+});
 
 // This function tells Next.js which routes to pre-render at build time
 export async function generateStaticParams() {
@@ -11,6 +19,29 @@ export async function generateStaticParams() {
   return videoData.map((video) => ({
     id: video.id.toString(),
   }));
+}
+
+// Generate metadata for each video page (good for SEO)
+export async function generateMetadata(
+  { params }: { params: { id: string } },
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const videoId = parseInt(params.id, 10);
+  const video = videoData.find(v => v.id === videoId);
+  
+  if (!video) {
+    return {
+      title: 'Video Not Found',
+    };
+  }
+  
+  return {
+    title: video.title,
+    description: video.description,
+    openGraph: {
+      images: [video.thumbnail],
+    },
+  };
 }
 
 // This is needed for static export to properly generate pages
@@ -86,6 +117,11 @@ export default function VideoPage({ params }: { params: { id: string } }) {
         
         <Suspense fallback={<div>Loading debug options...</div>}>
           <ClientVideoContent video={video} />
+        </Suspense>
+        
+        {/* GROQ AI Learning Assistant */}
+        <Suspense fallback={null}>
+          <GroqChatbot />
         </Suspense>
       </div>
     </div>

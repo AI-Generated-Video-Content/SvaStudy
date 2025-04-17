@@ -17,7 +17,7 @@ const Hero = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-6">
-              <span className="block text-purple-400">aaaaaaa</span>
+              <span className="block text-purple-400">Revolutionizing</span>
               <span className="block">Student Education</span>
               <span className="block">with AI Videos</span>
             </h1>

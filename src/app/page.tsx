@@ -7,6 +7,8 @@ import { FaPlay, FaGraduationCap, FaVideo, FaRobot, FaArrowRight } from "react-i
 import AIChatbot from "./components/AIChatbot";
 import PlaceholderImage from './components/PlaceholderImage';
 import { useState } from 'react';
+import { Suspense } from 'react';
+import GroqChatbot from './components/GroqChatbot';
 
 export default function Home() {
   const [imageErrors, setImageErrors] = useState<{ [key: number]: boolean }>({});
@@ -341,7 +343,9 @@ export default function Home() {
       </section>
 
       {/* AI Chatbot */}
-      <AIChatbot />
+      <Suspense fallback={null}>
+        <GroqChatbot />
+      </Suspense>
     </div>
   );
 }
