@@ -36,10 +36,20 @@ jobs:
 
       - name: Build Next.js site
         run: npm run build
-        shell: bash  # Fix YAML syntax
+        shell: bash
+        env:
+          NODE_ENV: production  # Ensure production environment for proper basePath
 
       - name: Add .nojekyll file
         run: touch ./out/.nojekyll
+        shell: bash
+        
+      - name: Fix CSS paths (if needed)
+        run: |
+          if [ -d "./out/_next" ]; then
+            echo "Fixing CSS paths in HTML files..."
+            find ./out -name "*.html" -type f -exec sed -i 's/\/_next\//\/SvaStudy\/_next\//g' {} \;
+          fi
         shell: bash
 
       - name: Upload artifact
